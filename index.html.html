@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FAF7F0" />
+  <meta name="description" content="以策略思維與視覺設計，將創意轉化為有影響力的品牌體驗。" />
+  <title>Visual Atelier｜品牌視覺設計作品集</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF6ED',
+            oat: '#E8DCC9',
+            butter: '#FFCB57',
+            clay: '#FF7A45',
+            coffee: '#2E6B4F',
+            ink: '#1F6F78'
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 55px rgba(92, 81, 70, .09)',
+            card: '0 10px 30px rgba(92, 81, 70, .07)'
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --cream: #FAF6ED;
+      --oat: #E8DCC9;
+      --butter: #FFCB57;
+      --clay: #FF7A45;
+      --coffee: #2E6B4F;
+      --ink: #1F6F78;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      color: var(--coffee);
+      background:
+        radial-gradient(ellipse at 78% 8%, rgba(245,229,168,.38), transparent 28rem),
+        radial-gradient(ellipse at 4% 35%, rgba(233,221,204,.34), transparent 26rem),
+        var(--cream);
+      font-family: 'DM Sans', 'Noto Sans TC', sans-serif;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--butter); color: var(--ink); }
+    .grain::before {
+      content: "";
+      position: absolute; inset: 0; pointer-events: none; opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+    .glass {
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(255,255,255,.88);
+      box-shadow: 0 16px 45px rgba(92,81,70,.08), inset 0 1px 0 rgba(255,255,255,.8);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .nav-link { position: relative; transition: color .25s ease; }
+    .nav-link::after {
+      content: ""; position: absolute; left: 0; right: 100%; bottom: -7px;
+      height: 2px; border-radius: 999px; background: var(--clay); transition: right .25s ease;
+    }
+    .nav-link:hover { color: var(--clay); }
+    .nav-link:hover::after { right: 0; }
+    .eyebrow { letter-spacing: .18em; text-transform: uppercase; }
+    .hero-title { letter-spacing: -.055em; line-height: 1.06; }
+    .text-gradient {
+      background: linear-gradient(105deg, #8F6652 0%, #C98F72 45%, #A78A49 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-orb {
+      position: absolute; border-radius: 9999px; filter: blur(1px);
+      background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), rgba(245,229,168,.78) 38%, rgba(201,143,114,.14) 72%, transparent 73%);
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero-art {
+      background: linear-gradient(145deg, rgba(255,255,255,.82), rgba(233,221,204,.62));
+      border: 1px solid rgba(255,255,255,.92);
+      box-shadow: 0 30px 80px rgba(92,81,70,.13);
+    }
+    .art-grid {
+      background-image: linear-gradient(rgba(92,81,70,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(92,81,70,.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .project-card { transition: transform .35s ease, box-shadow .35s ease; }
+    .project-card:hover { transform: translateY(-7px); box-shadow: 0 24px 50px rgba(92,81,70,.13); }
+    .project-art { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .project-card:hover .project-art { transform: scale(1.035); }
+    .btn-connect {
+      position: relative; isolation: isolate; border: 1px solid transparent;
+      background: linear-gradient(#fffdf8, #fffdf8) padding-box, linear-gradient(115deg, #8C7CF0, #66B8F3, #C5A8EA) border-box;
+      box-shadow: 0 7px 22px rgba(116,126,200,.13);
+      transition: background .25s ease, box-shadow .25s ease, transform .25s ease;
+    }
+    .btn-connect:hover {
+      background: #baf4d4; border-color: #7edca8;
+      box-shadow: 0 0 0 4px rgba(126,220,168,.18), 0 8px 30px rgba(71,190,131,.25);
+      transform: translateY(-2px);
+    }
+    .connect-status { display: none; }
+    .btn-connect:hover .connect-label { display: none; }
+    .btn-connect:hover .connect-status { display: inline; color: #176844; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.7,.2,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .1s; } .delay-2 { transition-delay: .2s; } .delay-3 { transition-delay: .3s; }
+    .blob { border-radius: 44% 56% 62% 38% / 45% 43% 57% 55%; }
+    .service-number { color: rgba(92,81,70,.24); font-size: 3.3rem; line-height: 1; font-weight: 700; letter-spacing: -.08em; }
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: block; }
+
+    /* Brand palette: color strategy from 色票.png */
+    body { background:
+      radial-gradient(ellipse at 78% 8%, rgba(255,203,87,.28), transparent 28rem),
+      radial-gradient(ellipse at 4% 35%, rgba(183,201,166,.28), transparent 26rem),
+      var(--cream); }
+    .text-gradient { background: linear-gradient(105deg, #2E6B4F 0%, #2F9D99 52%, #FF7A45 100%); -webkit-background-clip: text; background-clip: text; }
+    .btn-connect { background: linear-gradient(#FAF6ED, #FAF6ED) padding-box, linear-gradient(115deg, #2E6B4F, #2F9D99, #FFCB57) border-box; }
+    .btn-connect:hover { background: #2F9D99; border-color: #2E6B4F; box-shadow: 0 0 0 4px rgba(47,157,153,.18), 0 8px 30px rgba(46,107,79,.25); }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-13px) rotate(4deg); } }
+    @keyframes drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(8px,-10px); } }
+    .float-slow { animation: drift 7s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 導覽列 -->
+  <header class="fixed top-0 z-50 w-full px-4 sm:px-6">
+    <nav class="glass mx-auto mt-3 flex max-w-7xl items-center justify-between rounded-2xl px-5 py-3.5 sm:px-7" aria-label="主要導覽">
+      <a href="#home" class="flex items-center gap-3" aria-label="Visual Atelier 首頁">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-coffee text-sm font-bold text-cream">V.</span>
+        <span class="leading-tight">
+          <span class="block text-sm font-bold tracking-wide text-ink">VISUAL ATELIER</span>
+          <span class="block text-[10px] tracking-[.18em] text-coffee/65">DESIGN · BRAND · STORY</span>
+        </span>
+      </a>
+      <div class="hidden items-center gap-8 text-sm font-medium md:flex">
+        <a class="nav-link" href="#about">關於我</a>
+        <a class="nav-link" href="#work">精選作品</a>
+        <a class="nav-link" href="#services">服務項目</a>
+        <a class="nav-link" href="#process">合作流程</a>
+      </div>
+      <a href="#contact" class="btn-connect hidden rounded-full px-5 py-2.5 text-sm font-semibold text-coffee md:inline-flex">
+        <span class="connect-label">聊聊合作 ↗</span><span class="connect-status">Status: Ready to Connect</span>
+      </a>
+      <button id="menuButton" class="grid h-10 w-10 place-items-center rounded-xl border border-coffee/15 text-xl md:hidden" aria-label="開啟導覽選單" aria-expanded="false">☰</button>
+    </nav>
+    <div id="mobileMenu" class="mobile-menu glass mx-auto mt-2 max-w-7xl rounded-2xl p-4 md:hidden">
+      <div class="grid gap-1 text-sm">
+        <a class="rounded-xl px-4 py-3 hover:bg-oat/50" href="#about">關於我</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-oat/50" href="#work">精選作品</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-oat/50" href="#services">服務項目</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-oat/50" href="#process">合作流程</a>
+        <a class="rounded-xl px-4 py-3 font-semibold text-clay" href="#contact">聊聊合作 ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 首頁主視覺 -->
+    <section id="home" class="grain relative isolate flex min-h-[760px] items-center overflow-hidden px-5 pb-20 pt-36 sm:px-8 lg:min-h-[830px]">
+      <div class="hero-orb right-[-5rem] top-32 h-72 w-72 opacity-70 sm:right-[8%] sm:h-[26rem] sm:w-[26rem]"></div>
+      <div class="hero-orb left-[-7rem] top-[58%] h-52 w-52 opacity-40" style="animation-delay:-3s"></div>
+      <div class="relative mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.05fr_.95fr]">
+        <div class="relative z-10">
+          <div class="reveal mb-7 inline-flex items-center gap-2 rounded-full border border-clay/20 bg-white/60 px-4 py-2 text-xs font-semibold tracking-wide text-coffee">
+            <span class="h-2 w-2 rounded-full bg-clay"></span> BRAND VISUAL DESIGNER · CREATIVE PARTNER
+          </div>
+          <h1 class="hero-title reveal delay-1 max-w-3xl text-5xl font-semibold text-ink sm:text-6xl lg:text-[5.1rem]">
+            Design That<br />
+            <span class="text-gradient">Speaks.</span> Brands<br class="hidden sm:block" />
+            That Shine<span class="text-clay">.</span>
+          </h1>
+          <p class="reveal delay-2 mt-7 text-xl font-medium tracking-wide text-coffee sm:text-2xl">讓設計傳遞理念，讓品牌綻放光芒。</p>
+          <p class="reveal delay-2 mt-4 max-w-xl text-sm leading-8 text-coffee/75 sm:text-base">
+            從品牌想法出發，透過清晰的視覺策略與細膩的設計語言，讓每一次溝通都更有溫度、更有記憶點。
+          </p>
+          <div class="reveal delay-3 mt-9 flex flex-wrap items-center gap-4">
+            <a href="#work" class="inline-flex items-center gap-3 rounded-full bg-coffee px-6 py-3.5 text-sm font-semibold text-cream shadow-soft transition hover:-translate-y-1 hover:bg-ink">
+              探索精選作品 <span aria-hidden="true">↘</span>
+            </a>
+            <a href="#contact" class="btn-connect inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold">
+              <span class="connect-label">開始一場對話 ↗</span><span class="connect-status">Status: Ready to Connect</span>
+            </a>
+          </div>
+          <div class="reveal delay-3 mt-12 flex items-center gap-5 text-xs text-coffee/65">
+            <div class="flex -space-x-2">
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-cream bg-[#E9C7B1] text-[10px] font-bold text-coffee">V</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-cream bg-[#F5E5A8] text-[10px] font-bold text-coffee">✳</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-cream bg-[#D5DCC7] text-[10px] font-bold text-coffee">A</span>
+            </div>
+            <span>Thoughtful design. Meaningful impact.</span>
+          </div>
+        </div>
+
+        <!-- 右側抽象視覺作品：可替換為實際作品圖片 -->
+        <div class="reveal delay-2 relative mx-auto w-full max-w-[530px]">
+          <div class="hero-art art-grid relative aspect-[.92] overflow-hidden rounded-[2.3rem] p-5 sm:p-8">
+            <div class="absolute left-7 top-7 z-10 text-[10px] font-semibold tracking-[.2em] text-coffee/60">VISUAL STUDY / 001</div>
+            <div class="absolute right-7 top-7 z-10 rounded-full border border-coffee/15 px-3 py-1.5 text-[10px] tracking-widest text-coffee/70">2026 — STUDIO</div>
+            <div class="absolute inset-[13%] rounded-[2rem] bg-gradient-to-br from-[#F9EFC8] via-[#E8C7AD] to-[#C98F72] shadow-xl" style="transform:rotate(-5deg)"></div>
+            <div class="absolute left-[20%] top-[19%] h-[52%] w-[58%] rounded-[48%_52%_43%_57%/55%_42%_58%_45%] bg-[#FAF7F0] shadow-lg" style="transform:rotate(15deg)"></div>
+            <div class="absolute left-[36%] top-[28%] h-[37%] w-[38%] rounded-full bg-gradient-to-br from-[#E3B99D] to-[#B8755B] shadow-md" style="transform:rotate(-22deg)"></div>
+            <div class="absolute left-[15%] top-[42%] h-[28%] w-[28%] rounded-full border-[1.5px] border-white/80" style="transform:rotate(-25deg)"></div>
+            <div class="absolute right-[13%] top-[43%] h-24 w-24 rounded-full bg-[#F5E5A8]/90 blur-[1px]"></div>
+            <div class="absolute bottom-[17%] left-[12%] z-10 max-w-[70%]">
+              <p class="text-[10px] font-semibold tracking-[.25em] text-coffee/70">FORM FOLLOWS FEELING</p>
+              <p class="mt-2 text-3xl font-semibold leading-none tracking-tight text-ink sm:text-4xl">Make it<br><span class="italic text-[#9C624B]">memorable.</span></p>
+            </div>
+            <div class="absolute bottom-7 right-7 z-10 grid h-12 w-12 place-items-center rounded-full border border-white/80 bg-white/40 text-xl text-coffee backdrop-blur">✳</div>
+          </div>
+          <div class="glass float-slow absolute -left-4 top-[20%] rounded-2xl px-4 py-3 shadow-card sm:-left-9">
+            <span class="block text-[10px] tracking-[.15em] text-coffee/60">CREATIVE DIRECTION</span>
+            <span class="mt-1 block text-sm font-semibold text-ink">策略 × 美感</span>
+          </div>
+          <div class="glass absolute -bottom-5 right-3 rounded-2xl px-4 py-3 shadow-card sm:right-[-1.5rem]">
+            <span class="block text-[10px] tracking-[.15em] text-coffee/60">DESIGN WITH PURPOSE</span>
+            <span class="mt-1 flex items-center gap-2 text-sm font-semibold text-ink"><span class="h-2 w-2 rounded-full bg-[#8CB89A]"></span> Made to connect</span>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center gap-3 text-[10px] tracking-[.2em] text-coffee/55 sm:flex">
+        SCROLL TO EXPLORE <span class="text-base">↓</span>
+      </a>
+    </section>
+
+    <!-- 品牌理念 -->
+    <section id="about" class="px-5 py-24 sm:px-8 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
+        <div class="reveal">
+          <p class="eyebrow text-xs font-semibold text-clay">A LITTLE ABOUT MY APPROACH</p>
+          <h2 class="mt-5 text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">好設計，不只是<br><span class="text-gradient">好看而已。</span></h2>
+          <div class="mt-7 h-1 w-16 rounded-full bg-butter"></div>
+        </div>
+        <div class="reveal delay-1">
+          <p class="text-lg leading-9 text-coffee sm:text-xl sm:leading-10">
+            我相信設計是品牌與人之間的橋樑。好的視覺不只吸引目光，更能整理訊息、傳達價值，讓對的人理解你、記住你。
+          </p>
+          <p class="mt-5 leading-8 text-coffee/75">
+            從一個尚未成形的想法，到完整一致的品牌視覺，我重視每個細節背後的目的。將美感、溝通與實際應用整合，創造兼具辨識度與實用性的設計成果。
+          </p>
+          <div class="mt-9 grid gap-4 sm:grid-cols-3">
+            <div class="rounded-2xl border border-oat/80 bg-white/55 p-5">
+              <span class="text-2xl">✳</span><h3 class="mt-3 font-semibold text-ink">有策略</h3><p class="mt-1 text-sm leading-6 text-coffee/70">先理解目的，再決定視覺方向。</p>
+            </div>
+            <div class="rounded-2xl border border-oat/80 bg-white/55 p-5">
+              <span class="text-2xl">◌</span><h3 class="mt-3 font-semibold text-ink">有溫度</h3><p class="mt-1 text-sm leading-6 text-coffee/70">用細節建立親近且真誠的感受。</p>
+            </div>
+            <div class="rounded-2xl border border-oat/80 bg-white/55 p-5">
+              <span class="text-2xl">↗</span><h3 class="mt-3 font-semibold text-ink">有影響力</h3><p class="mt-1 text-sm leading-6 text-coffee/70">讓設計在真實情境中發揮價值。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 精選作品 -->
+    <section id="work" class="relative overflow-hidden bg-[#F0E8DB]/55 px-5 py-24 sm:px-8 sm:py-32">
+      <div class="absolute -right-24 top-20 h-72 w-72 rounded-full bg-butter/30 blur-3xl"></div>
+      <div class="relative mx-auto max-w-7xl">
+        <div class="reveal flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+          <div>
+            <p class="eyebrow text-xs font-semibold text-clay">SELECTED WORKS</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-5xl">讓每個想法，<span class="text-gradient">都有自己的樣子。</span></h2>
+          </div>
+          <p class="max-w-sm text-sm leading-7 text-coffee/70">從品牌視覺到數位內容，以不同形式探索一致而有辨識度的設計語言。</p>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="project-card reveal overflow-hidden rounded-[1.7rem] border border-white/80 bg-white/70 shadow-card">
+            <div class="overflow-hidden p-3">
+              <div class="project-art relative flex aspect-[1.18] items-center justify-center overflow-hidden rounded-[1.2rem] bg-[#E5D2BE]">
+                <div class="absolute -left-8 -top-8 h-48 w-48 rounded-full bg-[#F5E5A8]"></div>
+                <div class="absolute bottom-[-3rem] right-[-1rem] h-56 w-56 rounded-full bg-[#C98F72]"></div>
+                <div class="relative z-10 w-[70%] rotate-[-5deg] border border-white/60 bg-[#FAF7F0] p-5 shadow-xl">
+                  <p class="text-[9px] tracking-[.24em] text-clay">BOTANICAL / 01</p>
+                  <p class="mt-5 text-3xl font-semibold leading-none tracking-tight text-ink">Slow<br><span class="font-normal italic">Morning</span></p>
+                  <div class="mt-5 h-px w-full bg-coffee/25"></div>
+                  <p class="mt-2 text-[9px] tracking-[.14em] text-coffee/70">A SOFTER WAY TO LIVE</p>
+                </div>
+                <span class="absolute bottom-4 right-5 text-xs font-medium tracking-widest text-white/90">01 / BRAND</span>
+              </div>
+            </div>
+            <div class="p-6 pt-3">
+              <div class="flex items-center justify-between gap-3"><h3 class="text-lg font-semibold text-ink">慢日子生活品牌</h3><span class="rounded-full bg-oat/55 px-3 py-1 text-[10px]">品牌視覺</span></div>
+              <p class="mt-2 text-sm leading-6 text-coffee/70">以自然色調與留白，呈現日常生活中的溫柔質感。</p>
+            </div>
+          </article>
+          <article class="project-card reveal delay-1 overflow-hidden rounded-[1.7rem] border border-white/80 bg-white/70 shadow-card">
+            <div class="overflow-hidden p-3">
+              <div class="project-art relative flex aspect-[1.18] items-center justify-center overflow-hidden rounded-[1.2rem] bg-[#D9E0D0]">
+                <div class="absolute left-[12%] top-[10%] h-36 w-36 rounded-full border-[1.5px] border-[#64745B]/40"></div>
+                <div class="absolute bottom-[9%] right-[10%] h-44 w-32 rotate-12 rounded-t-full bg-[#8E9D7C]"></div>
+                <div class="relative z-10 flex h-[72%] w-[56%] flex-col justify-between bg-[#F8F4E9] p-5 shadow-xl">
+                  <p class="text-[9px] tracking-[.2em] text-[#738166]">FRESH & LOCAL</p>
+                  <div><p class="text-3xl font-semibold leading-tight text-[#485340]">Good<br>things<br><span class="italic">grow.</span></p><p class="mt-3 text-[9px] text-[#738166]">MARKET · SEASON · COMMUNITY</p></div>
+                  <div class="flex gap-1"><span class="h-1.5 w-8 rounded-full bg-[#738166]"></span><span class="h-1.5 w-4 rounded-full bg-[#D8B97B]"></span><span class="h-1.5 w-4 rounded-full bg-[#C98F72]"></span></div>
+                </div>
+                <span class="absolute bottom-4 right-5 text-xs font-medium tracking-widest text-white">02 / PRINT</span>
+              </div>
+            </div>
+            <div class="p-6 pt-3">
+              <div class="flex items-center justify-between gap-3"><h3 class="text-lg font-semibold text-ink">日常選物宣傳企劃</h3><span class="rounded-full bg-oat/55 px-3 py-1 text-[10px]">印刷設計</span></div>
+              <p class="mt-2 text-sm leading-6 text-coffee/70">整合活動資訊與品牌調性，打造清楚又吸睛的宣傳版面。</p>
+            </div>
+          </article>
+          <article class="project-card reveal delay-2 overflow-hidden rounded-[1.7rem] border border-white/80 bg-white/70 shadow-card">
+            <div class="overflow-hidden p-3">
+              <div class="project-art relative flex aspect-[1.18] items-center justify-center overflow-hidden rounded-[1.2rem] bg-[#E9D4C9]">
+                <div class="absolute right-[-1rem] top-[-2rem] h-48 w-48 rounded-full bg-[#F3DDA0]"></div>
+                <div class="absolute bottom-[-3rem] left-[-1rem] h-48 w-48 rounded-full bg-[#BD806A]"></div>
+                <div class="relative z-10 w-[72%] rounded-2xl border border-white/70 bg-white/75 p-5 shadow-xl backdrop-blur">
+                  <div class="flex items-center justify-between"><span class="text-[9px] tracking-[.18em] text-clay">SOCIAL CAMPAIGN</span><span class="text-lg">✳</span></div>
+                  <p class="mt-7 text-3xl font-semibold leading-tight text-ink">A little<br><span class="text-[#B8785E]">more joy.</span></p>
+                  <p class="mt-3 text-[10px] leading-5 text-coffee/70">Make room for what makes you feel alive.</p>
+                  <div class="mt-5 flex items-center justify-between border-t border-coffee/15 pt-3"><span class="text-[9px] tracking-widest">NEW COLLECTION</span><span class="text-sm">↗</span></div>
+                </div>
+                <span class="absolute bottom-4 right-5 text-xs font-medium tracking-widest text-white">03 / DIGITAL</span>
+              </div>
+            </div>
+            <div class="p-6 pt-3">
+              <div class="flex items-center justify-between gap-3"><h3 class="text-lg font-semibold text-ink">社群視覺系列</h3><span class="rounded-full bg-oat/55 px-3 py-1 text-[10px]">數位內容</span></div>
+              <p class="mt-2 text-sm leading-6 text-coffee/70">透過系列化的視覺節奏，讓社群內容更一致、更容易被記住。</p>
+            </div>
+          </article>
+        </div>
+        <p class="mt-6 text-center text-xs text-coffee/55">以上為網站示意作品，可依實際作品集替換圖片、名稱與介紹。</p>
+      </div>
+    </section>
+
+    <!-- 服務項目 -->
+    <section id="services" class="px-5 py-24 sm:px-8 sm:py-32">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <p class="eyebrow text-xs font-semibold text-clay">WHAT I CAN DO</p>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-5xl">從視覺到價值，<br class="sm:hidden">一起把想法做好。</h2>
+          <p class="mt-5 text-sm leading-7 text-coffee/70 sm:text-base">依照品牌階段與溝通需求，提供彈性、整合且重視細節的設計支援。</p>
+        </div>
+        <div class="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <article class="reveal rounded-[1.5rem] border border-oat/80 bg-white/55 p-6 transition hover:-translate-y-1 hover:bg-white/85">
+            <div class="flex items-start justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#F2E4D6] text-xl">✳</span><span class="service-number">01</span></div>
+            <h3 class="mt-8 text-lg font-semibold text-ink">品牌視覺設計</h3><p class="mt-3 text-sm leading-7 text-coffee/70">建立一致的視覺語言，讓品牌個性被清楚看見。</p>
+            <div class="mt-5 border-t border-oat/70 pt-4 text-xs leading-6 text-coffee/65">品牌主視覺・風格規劃・延伸應用</div>
+          </article>
+          <article class="reveal delay-1 rounded-[1.5rem] border border-oat/80 bg-white/55 p-6 transition hover:-translate-y-1 hover:bg-white/85">
+            <div class="flex items-start justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#F5EECF] text-xl">▤</span><span class="service-number">02</span></div>
+            <h3 class="mt-8 text-lg font-semibold text-ink">海報與印刷品</h3><p class="mt-3 text-sm leading-7 text-coffee/70">兼顧資訊層級與視覺吸引力，讓訊息一目了然。</p>
+            <div class="mt-5 border-t border-oat/70 pt-4 text-xs leading-6 text-coffee/65">活動海報・DM・簡報・刊物</div>
+          </article>
+          <article class="reveal delay-2 rounded-[1.5rem] border border-oat/80 bg-white/55 p-6 transition hover:-translate-y-1 hover:bg-white/85">
+            <div class="flex items-start justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#E3E9DC] text-xl">▧</span><span class="service-number">03</span></div>
+            <h3 class="mt-8 text-lg font-semibold text-ink">社群與數位視覺</h3><p class="mt-3 text-sm leading-7 text-coffee/70">打造適合不同平台的內容版型，維持品牌一致性。</p>
+            <div class="mt-5 border-t border-oat/70 pt-4 text-xs leading-6 text-coffee/65">社群貼文・廣告素材・網頁視覺</div>
+          </article>
+          <article class="reveal delay-3 rounded-[1.5rem] border border-oat/80 bg-white/55 p-6 transition hover:-translate-y-1 hover:bg-white/85">
+            <div class="flex items-start justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#F0DED5] text-xl">↗</span><span class="service-number">04</span></div>
+            <h3 class="mt-8 text-lg font-semibold text-ink">行銷宣傳支援</h3><p class="mt-3 text-sm leading-7 text-coffee/70">從宣傳目的出發，協助內容與視覺有效傳遞。</p>
+            <div class="mt-5 border-t border-oat/70 pt-4 text-xs leading-6 text-coffee/65">宣傳企劃・活動素材・內容整合</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 合作流程 -->
+    <section id="process" class="bg-[#E9DDCC]/45 px-5 py-24 sm:px-8 sm:py-32">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div><p class="eyebrow text-xs font-semibold text-clay">HOW WE WORK</p><h2 class="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-5xl">好的合作，從理解開始。</h2></div>
+          <p class="max-w-md text-sm leading-7 text-coffee/70">清楚的流程，讓每個階段都安心有方向；一起把想法一步步實現。</p>
+        </div>
+        <div class="mt-14 grid gap-4 md:grid-cols-4">
+          <div class="reveal rounded-2xl border border-white/80 bg-white/65 p-6">
+            <span class="text-xs font-bold tracking-[.18em] text-clay">STEP 01</span><div class="mt-5 text-2xl">☏</div><h3 class="mt-4 font-semibold text-ink">需求交流</h3><p class="mt-2 text-sm leading-6 text-coffee/70">了解目標、受眾、使用情境與期待方向。</p>
+          </div>
+          <div class="reveal delay-1 rounded-2xl border border-white/80 bg-white/65 p-6">
+            <span class="text-xs font-bold tracking-[.18em] text-clay">STEP 02</span><div class="mt-5 text-2xl">⌁</div><h3 class="mt-4 font-semibold text-ink">方向提案</h3><p class="mt-2 text-sm leading-6 text-coffee/70">整理視覺策略與設計方向，確認共同目標。</p>
+          </div>
+          <div class="reveal delay-2 rounded-2xl border border-white/80 bg-white/65 p-6">
+            <span class="text-xs font-bold tracking-[.18em] text-clay">STEP 03</span><div class="mt-5 text-2xl">✎</div><h3 class="mt-4 font-semibold text-ink">設計執行</h3><p class="mt-2 text-sm leading-6 text-coffee/70">依照確認方向製作，並透過回饋細緻調整。</p>
+          </div>
+          <div class="reveal delay-3 rounded-2xl border border-white/80 bg-white/65 p-6">
+            <span class="text-xs font-bold tracking-[.18em] text-clay">STEP 04</span><div class="mt-5 text-2xl">✧</div><h3 class="mt-4 font-semibold text-ink">交付與應用</h3><p class="mt-2 text-sm leading-6 text-coffee/70">整理完稿檔案，協助設計順利進入實際應用。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聯絡 CTA -->
+    <section id="solutions" class="bg-[#F0E8DB]/45 px-5 py-24 sm:px-8 sm:py-32">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mx-auto max-w-2xl text-center">
+          <p class="eyebrow text-xs font-semibold text-clay">DESIGN &amp; SOLUTIONS</p>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-5xl">設計風格及解決方案</h2>
+          <p class="mt-5 text-sm leading-7 text-coffee/70 sm:text-base">探索設計、專業知識與 AI 技術如何轉化為實用的解決方案。</p>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <a href="https://courses.taiwanmds.com/product/information?p=02c0c7b9ec7b11f0b3480242ac110002" target="_blank" rel="noopener noreferrer" class="project-card reveal rounded-[1.7rem] border border-white/80 bg-white/70 p-7 shadow-card">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-[#F5E5A8] text-2xl text-coffee"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
+            <h3 class="mt-7 text-xl font-semibold text-ink">設計風格</h3>
+            <p class="mt-3 text-sm leading-7 text-coffee/70">訂閱Vibe Coding行銷數據分析學習圈，跟著我們一同走入行銷數據分析與vibe coding自動化的世界</p>
+            <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-clay">了解更多 <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></span>
+          </a>
+          <a href="https://judgai.com/" target="_blank" rel="noopener noreferrer" class="project-card reveal delay-1 rounded-[1.7rem] border border-white/80 bg-white/70 p-7 shadow-card">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-[#E3E9DC] text-2xl text-coffee"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></div>
+            <h3 class="mt-7 text-xl font-semibold text-ink">製作推薦</h3>
+            <p class="mt-3 text-sm leading-7 text-coffee/70">從經驗、法條到正確說明，奇點讓每位保險專業者擁有一位懂法的科技夥伴。</p>
+            <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-clay">前往網站 <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></span>
+          </a>
+          <a href="https://judgai.com/saymind" target="_blank" rel="noopener noreferrer" class="project-card reveal delay-2 rounded-[1.7rem] border border-white/80 bg-white/70 p-7 shadow-card">
+            <div class="grid h-14 w-14 place-items-center rounded-2xl bg-[#F0DED5] text-2xl text-coffee"><i class="fa-solid fa-file-circle-question" aria-hidden="true"></i></div>
+            <h3 class="mt-7 text-xl font-semibold text-ink">問題解決</h3>
+            <p class="mt-3 text-sm leading-7 text-coffee/70">使用 LangChain 搭建的 RAG 系統，可上傳 PDF 並進行精準問答。</p>
+            <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-clay">查看方案 <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="px-5 py-24 sm:px-8 sm:py-32">
+      <div class="reveal relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#5C5146] px-6 py-14 text-cream shadow-soft sm:px-12 sm:py-20 lg:px-20">
+        <div class="absolute -right-12 -top-24 h-80 w-80 rounded-full bg-[#F5E5A8]/15 blur-3xl"></div>
+        <div class="absolute bottom-[-8rem] left-[35%] h-72 w-72 rounded-full bg-[#C98F72]/20 blur-3xl"></div>
+        <div class="relative grid items-center gap-10 lg:grid-cols-[1fr_auto]">
+          <div>
+            <p class="eyebrow text-xs font-semibold text-[#F5E5A8]">LET'S MAKE SOMETHING MEANINGFUL</p>
+            <h2 class="mt-5 max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">Make Creativity Matter.</h2>
+            <p class="mt-4 text-lg text-cream/85">讓創意，真正創造價值。</p>
+            <p class="mt-4 max-w-xl text-sm leading-7 text-cream/70">正在尋找品牌視覺夥伴，或有一個想實現的點子嗎？期待聽聽你的想法，一起讓它成為值得被看見的作品。</p>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-3" aria-label="社群連結">
+            <a href="https://line.me/ti/p/BQDXunGpvF" target="_blank" rel="noopener noreferrer" aria-label="LINE" class="grid h-11 w-11 place-items-center rounded-full border border-cream/30 text-lg transition hover:-translate-y-1 hover:bg-[#06C755] hover:text-white"><i class="fa-brands fa-line" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/ansingosafe/?locale=zh_TW" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="grid h-11 w-11 place-items-center rounded-full border border-cream/30 text-lg transition hover:-translate-y-1 hover:bg-[#1877F2] hover:text-white"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="LinkedIn（請補上連結）" class="grid h-11 w-11 place-items-center rounded-full border border-cream/30 text-lg transition hover:-translate-y-1 hover:bg-[#0A66C2] hover:text-white"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+            <a href="#" aria-label="GitHub（請補上連結）" class="grid h-11 w-11 place-items-center rounded-full border border-cream/30 text-lg transition hover:-translate-y-1 hover:bg-[#24292F] hover:text-white"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <a href="https://forms.gle/Sux8VhsNUZGiNEUg7" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-3 rounded-full bg-[#F5E5A8] px-6 py-4 text-sm font-semibold text-coffee transition hover:-translate-y-1 hover:bg-white">填寫需求表單 <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i></a>
+            <a href="mailto:hello@example.com?subject=品牌視覺合作洽詢" class="inline-flex items-center justify-center gap-3 rounded-full bg-cream px-6 py-4 text-sm font-semibold text-coffee transition hover:-translate-y-1 hover:bg-butter">寄信聊聊合作 <span>↗</span></a>
+            <button id="copyEmail" type="button" class="inline-flex items-center justify-center gap-3 rounded-full border border-cream/35 px-6 py-4 text-sm font-semibold text-cream transition hover:bg-white/10">複製聯絡信箱 <span>⧉</span></button>
+            <p id="copyFeedback" class="min-h-4 text-center text-xs text-cream/70" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="px-5 pb-8 sm:px-8">
+    <div class="mx-auto flex max-w-7xl flex-col justify-between gap-5 border-t border-oat pt-7 text-xs text-coffee/60 sm:flex-row sm:items-center">
+      <a href="#home" class="flex items-center gap-2 font-semibold tracking-wide text-coffee"><span class="grid h-7 w-7 place-items-center rounded-lg bg-coffee text-[10px] text-cream">V.</span> VISUAL ATELIER</a>
+      <p>Design with intention. Create with heart.</p>
+      <p>© <span id="year"></span> Visual Atelier. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // 手機版導覽選單：點擊連結後自動收合
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? '×' : '☰';
+      menuButton.setAttribute('aria-label', isOpen ? '關閉導覽選單' : '開啟導覽選單');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.textContent = '☰';
+        menuButton.setAttribute('aria-label', '開啟導覽選單');
+      });
+    });
+
+    // 區塊進場動畫：進入可視範圍時淡入並微幅上移
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => revealObserver.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+
+    // 聯絡信箱複製功能：請將下方信箱替換成自己的正式信箱
+    const contactEmail = 'hello@example.com';
+    const copyButton = document.getElementById('copyEmail');
+    const copyFeedback = document.getElementById('copyFeedback');
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(contactEmail);
+        copyFeedback.textContent = '已複製信箱：' + contactEmail;
+      } catch (error) {
+        copyFeedback.textContent = '請手動複製信箱：' + contactEmail;
+      }
+    });
+
+    // 自動更新頁尾年份
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
